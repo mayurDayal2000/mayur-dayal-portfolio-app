@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar/Navbar";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Introduction } from "@/components/layout/Introduction/Introduction";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
@@ -38,6 +39,13 @@ export default function Home() {
   return (
     <div className="flex h-screen flex-col bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800 dark:from-gray-900 dark:to-gray-800 dark:text-gray-100">
       <Navbar activeSection={activeSection} scrollToSection={scrollToSection} />
+
+      <main
+        ref={scrollContainerRef}
+        className="scrollbar-hide flex flex-1 snap-x snap-mandatory overflow-x-auto"
+      >
+        <Introduction contents={INTRODUCTION} />
+      </main>
     </div>
   );
 }
