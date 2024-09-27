@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar/Navbar";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Introduction } from "@/components/layout/Introduction/Introduction";
+import { Skills } from "@/components/layout/Skills/Skills";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
@@ -45,6 +46,7 @@ export default function Home() {
         className="scrollbar-hide flex flex-1 snap-x snap-mandatory overflow-x-auto"
       >
         <Introduction contents={INTRODUCTION} />
+        <Skills contents={SKILLS} />
       </main>
     </div>
   );
