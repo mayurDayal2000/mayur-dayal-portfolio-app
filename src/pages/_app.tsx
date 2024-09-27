@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Mayur Dayal | Frontend-focused SDE Portfolio</title>
       </Head>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 }
