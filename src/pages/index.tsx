@@ -5,6 +5,7 @@ import { Skills } from "@/components/layout/Skills/Skills";
 import { Projects } from "@/components/layout/Projects/Projects";
 import { Experience } from "@/components/layout/Experience/Experience";
 import { Education } from "@/components/layout/Education/Education";
+import { Contact } from "@/components/layout/Contact/Contact";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
@@ -53,6 +54,7 @@ export default function Home() {
         <Experience contents={EXPERIENCE} />
         <Projects contents={PROJECTS} />
         <Education contents={EDUCATION} />
+        <Contact contents={CONTACT} />
       </main>
     </div>
   );
