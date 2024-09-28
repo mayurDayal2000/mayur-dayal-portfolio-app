@@ -34,8 +34,8 @@ export function Projects({ contents }: ProjectsProps) {
 
   return (
     <section className="w-full flex-shrink-0 snap-start p-4 sm:p-8">
-      <div className="container mx-auto h-full">
-        <Card className="h-full overflow-y-auto border-none bg-white/50 shadow-lg backdrop-blur-sm dark:bg-gray-800/50">
+      <div className="container mx-auto h-full overflow-y-auto">
+        <Card className="min-h-full border-none bg-white/50 shadow-lg backdrop-blur-sm dark:bg-gray-800/50">
           <CardHeader>
             <CardTitle className="mb-4 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
               {TITLE}

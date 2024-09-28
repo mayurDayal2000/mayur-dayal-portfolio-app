@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Introduction } from "@/components/layout/Introduction/Introduction";
 import { Skills } from "@/components/layout/Skills/Skills";
 import { Projects } from "@/components/layout/Projects/Projects";
+import { Experience } from "@/components/layout/Experience/Experience";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
@@ -44,10 +45,11 @@ export default function Home() {
 
       <main
         ref={scrollContainerRef}
-        className="scrollbar-hide flex flex-1 snap-x snap-mandatory overflow-x-auto"
+        className="scrollbar-hide flex flex-1 snap-x snap-mandatory overflow-x-auto overflow-y-hidden"
       >
         <Introduction contents={INTRODUCTION} />
         <Skills contents={SKILLS} />
+        <Experience contents={EXPERIENCE} />
         <Projects contents={PROJECTS} />
       </main>
     </div>
