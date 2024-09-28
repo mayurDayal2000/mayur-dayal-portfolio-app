@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar/Navbar";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Introduction } from "@/components/layout/Introduction/Introduction";
 import { Skills } from "@/components/layout/Skills/Skills";
+import { Projects } from "@/components/layout/Projects/Projects";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
@@ -47,6 +48,7 @@ export default function Home() {
       >
         <Introduction contents={INTRODUCTION} />
         <Skills contents={SKILLS} />
+        <Projects contents={PROJECTS} />
       </main>
     </div>
   );
