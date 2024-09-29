@@ -1,7 +1,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -42,12 +41,13 @@ export function Contact({ contents }: ContactProps) {
             <CardTitle className="mb-4 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
               {TITLE}
             </CardTitle>
-            <CardDescription className="text-gray-600 dark:text-gray-300">
-              {DESCRIPTION}
-            </CardDescription>
           </CardHeader>
           <CardContent className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div className="space-y-4">
+              <p className="text-sm text-muted-foreground text-gray-600 dark:text-gray-300">
+                {DESCRIPTION}
+              </p>
+
               <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
                 <Mail className="h-5 w-5 text-blue-500" />
                 <Link
