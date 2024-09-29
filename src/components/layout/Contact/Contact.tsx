@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Github, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
 import Link from "next/link";
+import { ContactForm } from "./ContactForm/ContactForm";
 
 interface ContactProps {
   contents: {
@@ -112,6 +113,8 @@ export function Contact({ contents }: ContactProps) {
                 <span>{LOCATION}</span>
               </div>
             </div>
+
+            <ContactForm />
           </CardContent>
         </Card>
       </div>
