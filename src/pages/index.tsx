@@ -6,6 +6,8 @@ import { Projects } from "@/components/layout/Projects/Projects";
 import { Experience } from "@/components/layout/Experience/Experience";
 import { Education } from "@/components/layout/Education/Education";
 import { Contact } from "@/components/layout/Contact/Contact";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
@@ -56,6 +58,31 @@ export default function Home() {
         <Education contents={EDUCATION} />
         <Contact contents={CONTACT} />
       </main>
+
+      <footer className="flex justify-between items-center p-4">
+        <Button
+          variant="outline"
+          onClick={() => scrollToSection(activeSection - 1)}
+          disabled={activeSection === 0}
+          className="border-blue-500 text-blue-500 transition-all duration-300 hover:bg-blue-500 hover:text-white"
+        >
+          <ChevronLeft className="mr-2 h-4 w-4" /> Previous
+        </Button>
+
+        <p className="mb-2 text-sm text-gray-600 sm:mb-0 dark:text-gray-400">
+          Built with Next.js and Tailwind CSS ❤️
+        </p>
+
+        <Button
+          variant="outline"
+          onClick={() => scrollToSection(activeSection + 1)}
+          disabled={activeSection === 5}
+          className="border-blue-500 text-blue-500 transition-all duration-300 hover:bg-blue-500 hover:text-white"
+        >
+          Next
+          <ChevronRight className="ml-2 h-4 w-4" />
+        </Button>
+      </footer>
     </div>
   );
 }
