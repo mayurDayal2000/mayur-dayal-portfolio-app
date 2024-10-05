@@ -8,10 +8,13 @@ import { Education } from "@/components/layout/Education/Education";
 import { Contact } from "@/components/layout/Contact/Contact";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { selectData } from "@/lib/supabase";
+import { ContentTypes } from "@/interfaces/interfaces";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [contents, setContents] = useState<ContentTypes | null>(null);
 
   useEffect(() => {
     const scrollContainer: HTMLDivElement | null = scrollContainerRef.current;
@@ -36,12 +39,28 @@ export default function Home() {
     };
   }, []);
 
-  const scrollToSection = useCallback((index: number) => {
-    scrollContainerRef.current?.children[index].scrollIntoView({
-      behavior: "smooth",
-      inline: "start",
-    });
+  useEffect(() => {
+    async function fetchContent() {
+      const data = await selectData();
+      setContents(data as ContentTypes);
+    }
+
+    fetchContent();
   }, []);
+
+  const scrollToSection = useCallback((index: number) => {
+    if (index >= 0 && index <= 5) {
+      setActiveSection(index);
+      scrollContainerRef.current?.children[index].scrollIntoView({
+        behavior: "smooth",
+        inline: "start",
+      });
+    }
+  }, []);
+
+  if (!contents) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="flex h-screen flex-col bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800 dark:from-gray-900 dark:to-gray-800 dark:text-gray-100">
@@ -51,18 +70,18 @@ export default function Home() {
         ref={scrollContainerRef}
         className="scrollbar-hide flex flex-1 snap-x snap-mandatory overflow-x-auto overflow-y-hidden"
       >
-        <Introduction contents={INTRODUCTION} />
-        <Skills contents={SKILLS} />
-        <Experience contents={EXPERIENCE} />
-        <Projects contents={PROJECTS} />
-        <Education contents={EDUCATION} />
-        <Contact contents={CONTACT} />
+        <Introduction contents={contents.INTRODUCTION} />
+        <Skills contents={contents.SKILLS} />
+        <Experience contents={contents.EXPERIENCE} />
+        <Projects contents={contents.PROJECTS} />
+        <Education contents={contents.EDUCATION} />
+        <Contact contents={contents.CONTACT} />
       </main>
 
       <footer className="flex justify-between items-center p-4">
         <Button
           variant="outline"
-          onClick={() => scrollToSection(activeSection - 1)}
+          onClick={() => scrollToSection(Math.max(0, activeSection - 1))}
           disabled={activeSection === 0}
           className="border-blue-500 text-blue-500 transition-all duration-300 hover:bg-blue-500 hover:text-white"
         >
@@ -75,7 +94,7 @@ export default function Home() {
 
         <Button
           variant="outline"
-          onClick={() => scrollToSection(activeSection + 1)}
+          onClick={() => scrollToSection(Math.min(5, activeSection + 1))}
           disabled={activeSection === 5}
           className="border-blue-500 text-blue-500 transition-all duration-300 hover:bg-blue-500 hover:text-white"
         >
