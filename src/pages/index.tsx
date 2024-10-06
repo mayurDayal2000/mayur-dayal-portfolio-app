@@ -15,31 +15,50 @@ import { Loading } from "@/components/layout/Loading/Loading";
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const [contents, setContents] = useState<ContentTypes | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const scrollContainer: HTMLDivElement | null = scrollContainerRef.current;
+    if (!isLoading && scrollContainerRef.current) {
+      const currentSection = sectionRefs.current;
+      const currentScrollContainer = scrollContainerRef.current;
 
-    const handleScroll = () => {
-      if (scrollContainer) {
-        const scrollPosition = scrollContainer.scrollLeft;
-        const sectionWidth = scrollContainer.offsetWidth;
-        const currentSection = Math.round(scrollPosition / sectionWidth);
-        setActiveSection(currentSection);
-      }
-    };
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = currentSection.findIndex(
+                (ref) => ref === entry.target
+              );
+              if (index !== -1) {
+                setActiveSection(index);
+              }
+            }
+          });
+        },
+        {
+          root: currentScrollContainer,
+          rootMargin: "0px",
+          threshold: 0.8, // section is active when 80% is visible
+        }
+      );
 
-    if (scrollContainer) {
-      scrollContainer.addEventListener("scroll", handleScroll);
+      currentSection.forEach((section) => {
+        if (section) {
+          observer.observe(section);
+        }
+      });
+
+      return () => {
+        currentSection.forEach((section) => {
+          if (section) {
+            observer.unobserve(section);
+          }
+        });
+      };
     }
-
-    return () => {
-      if (scrollContainer) {
-        scrollContainer.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, []);
+  }, [isLoading]);
 
   useEffect(() => {
     async function fetchContent() {
@@ -73,12 +92,42 @@ export default function Home() {
         ref={scrollContainerRef}
         className="scrollbar-hide flex flex-1 snap-x snap-mandatory overflow-x-auto overflow-y-hidden"
       >
-        <Introduction contents={contents.INTRODUCTION} />
-        <Skills contents={contents.SKILLS} />
-        <Experience contents={contents.EXPERIENCE} />
-        <Projects contents={contents.PROJECTS} />
-        <Education contents={contents.EDUCATION} />
-        <Contact contents={contents.CONTACT} />
+        <Introduction
+          ref={(el) => {
+            sectionRefs.current[0] = el;
+          }}
+          contents={contents.INTRODUCTION}
+        />
+        <Skills
+          ref={(el) => {
+            sectionRefs.current[1] = el;
+          }}
+          contents={contents.SKILLS}
+        />
+        <Experience
+          ref={(el) => {
+            sectionRefs.current[2] = el;
+          }}
+          contents={contents.EXPERIENCE}
+        />
+        <Projects
+          ref={(el) => {
+            sectionRefs.current[3] = el;
+          }}
+          contents={contents.PROJECTS}
+        />
+        <Education
+          ref={(el) => {
+            sectionRefs.current[4] = el;
+          }}
+          contents={contents.EDUCATION}
+        />
+        <Contact
+          ref={(el) => {
+            sectionRefs.current[5] = el;
+          }}
+          contents={contents.CONTACT}
+        />
       </main>
 
       <footer className="flex justify-between items-center p-4">
