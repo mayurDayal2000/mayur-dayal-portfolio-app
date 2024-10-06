@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { insertContactFormData } from "@/lib/supabase";
 
 const formSchema = z.object({
   name: z
@@ -51,19 +52,36 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    // API call
-    setTimeout(() => {
-      console.log(values);
-      setIsSubmitting(false);
+
+    try {
+      const result = await insertContactFormData(values);
+
+      if (result.success) {
+        toast({
+          title: "Message sent!",
+          description:
+            "Thank you for your message. I will get back to you soon.",
+          variant: "success",
+        });
+        form.reset();
+      } else {
+        throw new Error(result.error);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
       toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I will get back to you soon.",
-        variant: "success",
+        title: "Error",
+        description:
+          error instanceof Error
+            ? error.message
+            : "An unexpected error occurred. Please try again later.",
+        variant: "destructive",
       });
-      form.reset();
-    }, 2000);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
