@@ -10,11 +10,13 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { selectData } from "@/lib/supabase";
 import { ContentTypes } from "@/interfaces/interfaces";
+import { Loading } from "@/components/layout/Loading/Loading";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [contents, setContents] = useState<ContentTypes | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const scrollContainer: HTMLDivElement | null = scrollContainerRef.current;
@@ -43,6 +45,7 @@ export default function Home() {
     async function fetchContent() {
       const data = await selectData();
       setContents(data as ContentTypes);
+      setIsLoading(false);
     }
 
     fetchContent();
@@ -58,8 +61,8 @@ export default function Home() {
     }
   }, []);
 
-  if (!contents) {
-    return <h1>Loading...</h1>;
+  if (isLoading || !contents) {
+    return <Loading />;
   }
 
   return (
