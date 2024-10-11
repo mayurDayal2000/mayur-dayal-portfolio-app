@@ -1,4 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { forwardRef } from "react";
 
 interface EducationProps {
@@ -14,7 +16,10 @@ interface EducationProps {
     };
     CERTIFICATIONS: {
       CTITLE: string;
-      CONTENTS: string[];
+      CONTENTS: {
+        TITLE: string;
+        REDIRECT: string;
+      }[];
     };
   };
 }
@@ -59,8 +64,20 @@ export const Education = forwardRef<HTMLElement, EducationProps>(
                 </h3>
 
                 <ul className="mt-2 list-inside list-disc space-y-2 text-sm text-gray-600 sm:text-base dark:text-gray-300">
-                  {CONTENTS.map((content, index) => (
-                    <li key={`content-${index}`}>{content}</li>
+                  {CONTENTS.map(({ TITLE, REDIRECT }, index) => (
+                    <li key={`content-${index}`}>
+                      <Link
+                        href={REDIRECT}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={`view credentials for ${TITLE}`}
+                        className="inline-flex items-center gap-x-2 hover:text-blue-500"
+                      >
+                        {TITLE}
+
+                        <ExternalLink className="h-4 w-4" />
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </div>

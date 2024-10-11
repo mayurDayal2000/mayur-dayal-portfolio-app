@@ -41,7 +41,10 @@ export interface ContentTypes {
     };
     CERTIFICATIONS: {
       CTITLE: string;
-      CONTENTS: string[];
+      CONTENTS: {
+        TITLE: string;
+        REDIRECT: string;
+      }[];
     };
   };
   EXPERIENCE: {
