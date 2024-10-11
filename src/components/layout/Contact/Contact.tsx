@@ -52,69 +52,71 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(
                   {DESCRIPTION}
                 </p>
 
-                <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                <div className="flex md:items-center space-x-2 text-gray-700 dark:text-gray-200">
                   <IconMail size={20} className="text-blue-500" />
                   <Link
                     href={`mailto:${EMAIL}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:underline text-xs sm:text-sm md:text-base"
                   >
                     {EMAIL}
                   </Link>
                 </div>
 
-                <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                <div className="flex md:items-center space-x-2 text-gray-700 dark:text-gray-200">
                   <IconBrandGithub size={20} className="text-blue-500" />
                   <Link
                     href={GITHUB}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:underline text-xs sm:text-sm md:text-base"
                   >
                     {GITHUB.split("//")[1]}
                   </Link>
                 </div>
 
-                <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                <div className="flex md:items-center space-x-2 text-gray-700 dark:text-gray-200">
                   <IconBrandLinkedin size={20} className="text-blue-500" />
                   <Link
                     href={LINKEDIN}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:underline text-xs sm:text-sm md:text-base"
                   >
                     {LINKEDIN.split("//")[1]}
                   </Link>
                 </div>
 
-                <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                <div className="flex md:items-center space-x-2 text-gray-700 dark:text-gray-200">
                   <IconBrandTwitter size={20} className="text-blue-500" />
                   <Link
                     href={TWITTER}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:underline text-xs sm:text-sm md:text-base"
                   >
                     {TWITTER.split("//")[1]}
                   </Link>
                 </div>
 
-                <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                <div className="flex md:items-center space-x-2 text-gray-700 dark:text-gray-200">
                   <IconBrandReddit size={20} className="text-blue-500" />
                   <Link
                     href={REDDIT}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline"
+                    className="hover:underline text-xs sm:text-sm md:text-base"
                   >
                     {REDDIT.split("//")[1]}
                   </Link>
                 </div>
 
-                <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
+                <div className="flex md:items-center space-x-2 text-gray-700 dark:text-gray-200">
                   <IconMapPin size={20} className="text-blue-500" />
-                  <span>{LOCATION}</span>
+                  <span className="text-xs sm:text-sm md:text-base">
+                    {LOCATION}
+                  </span>
                 </div>
               </div>
 
