@@ -57,7 +57,7 @@ export const Projects = forwardRef<HTMLElement, ProjectsProps>(
                 ))}
               </div>
 
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {filteredProjects.map(
                   ({
                     id,
