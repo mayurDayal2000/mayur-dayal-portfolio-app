@@ -21,7 +21,7 @@ export function Navbar({ activeSection, scrollToSection }: NavbarProps) {
   ];
 
   return (
-    <nav className="bg-white p-4 shadow-md dark:bg-gray-800">
+    <nav className="bg-white p-4 shadow-md dark:bg-gray-800 hidden sm:block">
       <div className="container mx-auto flex flex-col items-center justify-between lg:flex-row overflow-y-auto">
         <h1 className="mb-4 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-2xl font-bold text-transparent lg:mb-0">
           Mayur Dayal
