@@ -30,7 +30,7 @@ export const Introduction = forwardRef<HTMLElement, IntroductionProps>(
     const { YOUR_NAME, WHO_ARE_YOU, WHAT_YOU_DO, EMAIL, GITHUB } = contents;
     return (
       <section className="w-full flex-shrink-0 snap-start p-4 sm:p-8" ref={ref}>
-        <div className="container mx-auto h-full">
+        <div className="container mx-auto h-full overflow-y-auto">
           <Card className="flex min-h-full flex-col items-center justify-center border-none bg-white/50 text-center shadow-lg backdrop-blur-sm dark:bg-gray-800/50">
             <CardHeader>
               <CardTitle className="mb-4 bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">

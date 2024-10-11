@@ -130,17 +130,18 @@ export default function Home() {
         />
       </main>
 
-      <footer className="flex justify-between items-center p-4">
+      <footer className="flex items-center justify-between gap-x-2 p-4">
         <Button
           variant="outline"
           onClick={() => scrollToSection(Math.max(0, activeSection - 1))}
           disabled={activeSection === 0}
           className="border-blue-500 text-blue-500 transition-all duration-300 hover:bg-blue-500 hover:text-white"
         >
-          <ChevronLeft className="mr-2 h-4 w-4" /> Previous
+          <ChevronLeft className="h-4 w-4 sm:mr-2" />
+          <span className="hidden sm:block">Previous</span>
         </Button>
 
-        <p className="mb-2 text-sm text-gray-600 sm:mb-0 dark:text-gray-400">
+        <p className="mb-2 text-center text-xs text-gray-600 sm:mb-0 sm:text-sm dark:text-gray-400">
           Built with Next.js and Tailwind CSS ❤️
         </p>
 
@@ -150,8 +151,8 @@ export default function Home() {
           disabled={activeSection === 5}
           className="border-blue-500 text-blue-500 transition-all duration-300 hover:bg-blue-500 hover:text-white"
         >
-          Next
-          <ChevronRight className="ml-2 h-4 w-4" />
+          <span className="hidden sm:block">Next</span>
+          <ChevronRight className="h-4 w-4 sm:ml-2" />
         </Button>
       </footer>
     </div>
