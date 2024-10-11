@@ -1,8 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Github, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
 import Link from "next/link";
 import { ContactForm } from "./ContactForm/ContactForm";
 import { forwardRef } from "react";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandReddit,
+  IconBrandTwitter,
+  IconMail,
+  IconMapPin,
+} from "@tabler/icons-react";
 
 interface ContactProps {
   contents: {
@@ -46,7 +53,7 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(
                 </p>
 
                 <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
-                  <Mail className="h-5 w-5 text-blue-500" />
+                  <IconMail size={20} className="text-blue-500" />
                   <Link
                     href={`mailto:${EMAIL}`}
                     target="_blank"
@@ -58,7 +65,7 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(
                 </div>
 
                 <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
-                  <Github className="h-5 w-5 text-blue-500" />
+                  <IconBrandGithub size={20} className="text-blue-500" />
                   <Link
                     href={GITHUB}
                     target="_blank"
@@ -70,7 +77,7 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(
                 </div>
 
                 <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
-                  <Linkedin className="h-5 w-5 text-blue-500" />
+                  <IconBrandLinkedin size={20} className="text-blue-500" />
                   <Link
                     href={LINKEDIN}
                     target="_blank"
@@ -82,7 +89,7 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(
                 </div>
 
                 <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
-                  <Twitter className="h-5 w-5 text-blue-500" />
+                  <IconBrandTwitter size={20} className="text-blue-500" />
                   <Link
                     href={TWITTER}
                     target="_blank"
@@ -94,7 +101,7 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(
                 </div>
 
                 <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
-                  <Linkedin className="h-5 w-5 text-blue-500" />
+                  <IconBrandReddit size={20} className="text-blue-500" />
                   <Link
                     href={REDDIT}
                     target="_blank"
@@ -106,7 +113,7 @@ export const Contact = forwardRef<HTMLElement, ContactProps>(
                 </div>
 
                 <div className="flex items-center space-x-2 text-gray-700 dark:text-gray-200">
-                  <MapPin className="h-5 w-5 text-blue-500" />
+                  <IconMapPin size={20} className="text-blue-500" />
                   <span>{LOCATION}</span>
                 </div>
               </div>
