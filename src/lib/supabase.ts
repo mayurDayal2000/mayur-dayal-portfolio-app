@@ -23,7 +23,6 @@ export async function selectData() {
     return null;
   }
 
-  console.log("Data fetched successfully:");
   return data.data;
 }
 
