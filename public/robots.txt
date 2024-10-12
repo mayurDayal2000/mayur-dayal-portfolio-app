@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://mayurdayal-portfolio.vercel.app/
+
+# Sitemaps
+Sitemap: https://mayurdayal-portfolio.vercel.app/sitemap.xml
