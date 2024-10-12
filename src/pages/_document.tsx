@@ -7,7 +7,11 @@ export default function Document() {
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <meta
           name="description"
-          content="Explore the projects and skills of Mayur Dayal, a Frontend-focused Software Engineer with Backend capabilities (APIs, Auth) and DevOps expertise (CI/CD, Containerization, Orchestration). Specializing in Next.js, React, and modern JavaScript, discover innovative solutions and creative designs that span the full stack."
+          content="Discover Mayur's portfolio: Frontend-focused SDE with Backend & DevOps expertise. Expert in Next.js, React, JS/TS, CI/CD & Containerization."
+        />
+        <meta
+          name="keywords"
+          content="Frontend-focused, SDE, Next.js, React, JS/TS"
         />
       </Head>
       <body className="antialiased">
